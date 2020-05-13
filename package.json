@@ -1,0 +1,25 @@
+{
+    "name": "promotions-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "client": "npm start --prefix client",
+        "api": "npm run build && node ./build/Api.js",
+        "app": "concurrently \"npm run api\" \"npm run client\""
+    },
+    "author": "Chen Gazit",
+    "license": "ISC",
+    "dependencies": {
+        "@types/cors": "^2.8.6",
+        "@types/express": "^4.17.6",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "react-app-polyfill": "^1.0.6",
+        "typescript": "^3.9.2"
+    },
+    "devDependencies": {
+        "concurrently": "^5.2.0"
+    }
+}
