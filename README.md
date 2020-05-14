@@ -14,4 +14,9 @@ npm install
 
 ## Usage
 
+Run the app using this command:
+```bash
+npm run app
+```
+
 Click on the big blue button to load promotions data from the server
