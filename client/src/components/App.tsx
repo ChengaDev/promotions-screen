@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Loader from './Loader';
 import Grid, { GridProps } from './Grid/Grid';
@@ -7,22 +7,25 @@ import GridColumnConfig from '../models/GridColumnConfig';
 import { loadPromotions } from '../api/Promotions';
 import { loadColumns } from '../api/GridColumnConfig';
 import { FadeInAnimation } from '../animations/Animations';
+import { IndexRange } from 'react-virtualized';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
+    const firstPageSize = 10;
     const [isFetching, setIsFetching] = useState<boolean>(false);
     const [rows, setRows] = useState<Promotion[]>([]);
     const [columns, setColumns] = useState<GridColumnConfig[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    const onLoadButtonClick = useCallback(async () => {
+    // used for initial data load - columns & first rows
+    const onLoadButtonClick = async () => {
         try {
             // only fetch once
             if (isFetching) return;
-
             setIsFetching(true);
 
             // perform fetch
-            let promotions = await loadPromotions();
+            let promotions = await loadPromotions(0, firstPageSize);
             let columns = await loadColumns();
 
             // save the result
@@ -34,12 +37,22 @@ function App() {
             setError(error);
             setIsFetching(false);
         }
-    }, [isFetching]);
+    };
+
+    // used for lazy load - new rows
+    const loadMoreRows = async (params: IndexRange) => {
+        return loadPromotions(params.startIndex, params.stopIndex).then(
+            (promotions) => {
+                setRows([...rows, ...promotions]);
+            }
+        );
+    };
 
     const renderGrid = () => {
         let gridProps: GridProps = {
             rows,
             columns,
+            loadMoreRows,
             totalRowText: 'rows'
         };
         return <Grid {...gridProps} />;
@@ -72,7 +85,9 @@ function App() {
     return (
         <Container>
             <h1>Promotions Grid</h1>
-            <Content>{renderContent()}</Content>
+            <ErrorBoundary>
+                <Content>{renderContent()}</Content>
+            </ErrorBoundary>
             <LoadButton onClick={onLoadButtonClick}>
                 Load data from server
             </LoadButton>

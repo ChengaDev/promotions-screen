@@ -13,7 +13,8 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react"
+        "jsx": "react",
+        "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */
     },
     "include": ["src"]
 }
