@@ -1,5 +1,4 @@
 import { Request, Response, Router } from 'express';
-import GridColumnConfig from '../models/GridColumnConfig';
 import data from '../data/columns/ConfigData';
 
 const baseColumnsConfigPath = '/config';

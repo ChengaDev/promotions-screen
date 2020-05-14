@@ -29,9 +29,9 @@ const Row = (props: RowProps) => {
 
     return (
         <RowElement style={style}>
-            <Cell relativeWidth={0.5} minWidth={'50px'}>
+            <SelectionCell relativeWidth={0.5} minWidth={'30px'}>
                 <input type='checkbox' />
-            </Cell>
+            </SelectionCell>
             {Object.keys(row).map((cell: string, index: number) => {
                 const column = columns.find((column) => column.name === cell);
                 return (
@@ -60,9 +60,26 @@ const Row = (props: RowProps) => {
     );
 };
 
+const SelectionCell = styled(Cell)`
+    flex: 0.5;
+    text-align: center;
+    text-indent: 0;
+
+    @media screen and (max-width: 768px) {
+        flex: 0.5;
+        font-size: 8px;
+        min-width: 30px;
+    }
+`;
+
 const ActionsCell = styled(Cell)`
     text-align: center;
     text-indent: 0;
+
+    @media screen and (max-width: 768px) {
+        font-size: 8px;
+        min-width: 30px;
+    }
 `;
 
 const RowElement = styled.div`

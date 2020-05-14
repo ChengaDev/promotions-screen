@@ -47,7 +47,7 @@ const Container = styled.div`
     animation: ${FadeInAnimation} 0.4s;
     width: 120px;
     height: 120px;
-    right: 0;
+    right: 20px;
     z-index: 1;
     position: absolute;
     background-color: #d8e3e0;

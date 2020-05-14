@@ -14,14 +14,31 @@ export const Cell = styled.div<CellProps>`
     font-weight: 700;
     flex: ${(props: CellProps) => props.relativeWidth};
     min-width: ${(props: CellProps) => props.minWidth};
+
+    @media screen and (max-width: 1200px) {
+        font-size: 12px;
+    }
+
+    @media screen and (max-width: 768px) {
+        text-indent: 5px;
+        font-size: 8px;
+        min-width: 30px;
+        flex: 1;
+    }
 `;
 
 export const MenuIcon = styled.span`
     cursor: pointer;
     line-height: 40px;
     font-size: 30px;
+
     &:hover {
         color: red;
         font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 15px;
+        min-width: 30px;
     }
 `;

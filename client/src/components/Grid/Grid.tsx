@@ -36,7 +36,7 @@ const Grid = (props: GridProps) => {
     return (
         <Table>
             <Headers>
-                <Header minWidth={'50px'} relativeWidth={0.5}></Header>
+                <SelectionColumnHeader minWidth={'30px'} relativeWidth={0.5} />
                 {columns.map((column: GridColumnConfig, index: number) => (
                     <Header
                         key={index}
@@ -46,9 +46,9 @@ const Grid = (props: GridProps) => {
                         {columns[index].displayName}
                     </Header>
                 ))}
-                <Header minWidth={'100px'} relativeWidth={1}>
+                <ActionsColumnHeader minWidth={'30px'} relativeWidth={1}>
                     Actions
-                </Header>
+                </ActionsColumnHeader>
             </Headers>
             <Body>
                 <AutoSizer>
@@ -97,6 +97,10 @@ const Body = styled.div`
     background-color: white;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
+
+    &div.ReactVirtualized__Grid {
+        overflow-y: overlay !important;
+    }
 `;
 
 const Header = styled(Cell)`
@@ -111,6 +115,19 @@ const Header = styled(Cell)`
     &:first-of-type {
         border-left: none;
     }
+`;
+
+const SelectionColumnHeader = styled(Header)`
+    flex: ${(props: CellProps) => props.relativeWidth};
+
+    @media screen and (max-width: 768px) {
+        flex: 0.5;
+    }
+`;
+
+const ActionsColumnHeader = styled(Header)`
+    text-indent: 0;
+    text-align: center;
 `;
 
 const Headers = styled.div`
