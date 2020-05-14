@@ -16,12 +16,13 @@ export const Cell = styled.div<CellProps>`
     min-width: ${(props: CellProps) => props.minWidth};
 
     @media screen and (max-width: 1200px) {
+        text-indent: 10px;
         font-size: 12px;
     }
 
     @media screen and (max-width: 768px) {
         text-indent: 5px;
-        font-size: 8px;
+        font-size: 7px;
         min-width: 30px;
         flex: 1;
     }

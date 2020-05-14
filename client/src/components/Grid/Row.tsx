@@ -67,7 +67,7 @@ const SelectionCell = styled(Cell)`
 
     @media screen and (max-width: 768px) {
         flex: 0.5;
-        font-size: 8px;
+        font-size: 7px;
         min-width: 30px;
     }
 `;
@@ -77,7 +77,7 @@ const ActionsCell = styled(Cell)`
     text-indent: 0;
 
     @media screen and (max-width: 768px) {
-        font-size: 8px;
+        font-size: 7px;
         min-width: 30px;
     }
 `;

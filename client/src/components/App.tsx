@@ -6,6 +6,7 @@ import Promotion from '../models/Promotion';
 import GridColumnConfig from '../models/GridColumnConfig';
 import { loadPromotions } from '../api/Promotions';
 import { loadColumns } from '../api/GridColumnConfig';
+import { FadeInAnimation } from '../animations/Animations';
 
 function App() {
     const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -45,15 +46,15 @@ function App() {
     };
 
     const renderError = () => {
-        return <ErrorDisplay>OOPS... an error has occured</ErrorDisplay>;
+        return <RedMessage>OOPS... an error has occured :(</RedMessage>;
     };
 
     const renderEmptyState = () => {
         return (
-            <EmptyState>
+            <RedMessage>
                 <div>Nothing to display...</div>
                 <div>Click the button to load data :)</div>
-            </EmptyState>
+            </RedMessage>
         );
     };
 
@@ -71,34 +72,36 @@ function App() {
     return (
         <Container>
             <h1>Promotions Grid</h1>
+            <Content>{renderContent()}</Content>
             <LoadButton onClick={onLoadButtonClick}>
                 Load data from server
             </LoadButton>
-            <Content>{renderContent()}</Content>
         </Container>
     );
 }
 
-const EmptyState = styled.div`
+const RedMessage = styled.div`
+    padding: 30px;
     color: red;
-    font-size: 40px;
-`;
+    font-size: 25px;
 
-const ErrorDisplay = styled.div`
-    color: red;
-    font-size: 40px;
+    & h1 {
+        font-weight: bold;
+    }
 `;
 
 const Container = styled.div`
+    animation: ${FadeInAnimation} 1s;
     padding-top: 50px;
     text-align: center;
 `;
 
 const LoadButton = styled.button`
     margin-top: 30px;
+    margin-bottom: 30px;
     cursor: pointer;
     height: 50px;
-    width: fit-content;
+    width: 200px;
     background-color: #366fb5;
     color: white;
     font-size: 16px;

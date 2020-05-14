@@ -6,6 +6,7 @@ import { FadeInAnimation } from '../../animations/Animations';
 import { Cell, CellProps } from '../Grid/Shared';
 import Row from '../Grid/Row';
 import { List, AutoSizer } from 'react-virtualized';
+import SummaryRow from './SummaryRow';
 
 export type GridProps = {
     columns: Array<GridColumnConfig>;
@@ -20,7 +21,7 @@ type RenderRowProps = {
 };
 
 const Grid = (props: GridProps) => {
-    const { columns, rows, totalRowText } = props;
+    const { columns, rows } = props;
 
     const renderRow = (props: RenderRowProps) => {
         return (
@@ -63,34 +64,10 @@ const Grid = (props: GridProps) => {
                     )}
                 </AutoSizer>
             </Body>
-            <Summary>
-                <TotalRow>
-                    {rows.length} {totalRowText}
-                </TotalRow>
-            </Summary>
+            <SummaryRow displayText={`${rows.length} rows`} />
         </Table>
     );
 };
-
-const TotalRow = styled.div`
-    position: absolute;
-    font-size: 13px;
-    right: 0;
-    margin-right: 20px;
-    font-weight: 700;
-`;
-
-const Summary = styled.div`
-    background-color: #e4f0e5;
-    position: relative;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 0 0 5px 5px;
-    border-top: 2px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-`;
 
 const Body = styled.div`
     height: 450px;
@@ -141,13 +118,11 @@ const Headers = styled.div`
 
 const Table = styled.div`
     text-align: left;
-    animation: ${FadeInAnimation} 0.8s;
-    padding-right: 30px;
-    padding-left: 30px;
+    animation: ${FadeInAnimation} 1s;
     min-width: fit-content;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 40px;
 `;

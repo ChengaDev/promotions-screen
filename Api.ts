@@ -17,8 +17,8 @@ class PromotionsApi {
 
         // enable cors
         app.use(cors());
-        // add delay to response
-        app.use((req, res, next) => setTimeout(next, 1000));
+        // add delay to response by middleware
+        app.use((req, res, next) => setTimeout(next, 1200));
 
         // use routers
         app.use(configRouter);

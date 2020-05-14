@@ -14,8 +14,8 @@ function Loader() {
 }
 
 const LoaderWrapper = styled.div`
-    margin-top: 30px;
-    animation: ${FadeInAnimation} 0.8s;
+    margin-bottom: 50px;
+    animation: ${FadeInAnimation} 1s;
 `;
 
 const LoaderImage = styled.img`
@@ -28,7 +28,11 @@ const LoaderImage = styled.img`
 const LoaderText = styled.div`
     margin-top: -20px;
     font-size: 30px;
-    color: #34e5eb;
+    color: #3492eb;
+
+    @media screen and (max-width: 768px) {
+        font-size: 20px;
+    }
 `;
 
 export default Loader;
