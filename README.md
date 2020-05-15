@@ -14,9 +14,19 @@ npm install
 
 ## Usage
 
-Run the app using this command:
+Run the entire app using this command:
 ```bash
 npm run app
+```
+
+Run only the client side (for error simulation) using this command:
+```bash
+npm run client
+```
+
+Run only the api using this command:
+```bash
+npm run api
 ```
 
 Click on the big blue button to load promotions data from the server
