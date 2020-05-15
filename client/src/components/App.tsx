@@ -9,9 +9,11 @@ import { loadColumns } from '../api/GridColumnConfig';
 import { FadeInAnimation } from '../animations/Animations';
 import { IndexRange } from 'react-virtualized';
 import ErrorBoundary from './ErrorBoundary';
+import WelcomeModal from './Modals/WelcomeModal';
 
 function App() {
     const firstPageSize = 10;
+    const [showWelcomeModal, setShowWelcomeModal] = useState(true);
     const [isFetching, setIsFetching] = useState<boolean>(false);
     const [rows, setRows] = useState<Promotion[]>([]);
     const [columns, setColumns] = useState<GridColumnConfig[]>([]);
@@ -82,6 +84,10 @@ function App() {
         return renderGrid();
     };
 
+    const closeModal = () => {
+        setShowWelcomeModal(false);
+    };
+
     return (
         <Container>
             <h1>Promotions Grid</h1>
@@ -91,6 +97,7 @@ function App() {
             <LoadButton onClick={onLoadButtonClick}>
                 Load data from server
             </LoadButton>
+            {showWelcomeModal && <WelcomeModal closeModal={closeModal} />}
         </Container>
     );
 }
