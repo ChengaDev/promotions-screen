@@ -119,6 +119,7 @@ const Container = styled.div`
 `;
 
 const LoadButton = styled.button`
+    animation: ${FadeInAnimation} 1s;
     margin-top: 30px;
     margin-bottom: 30px;
     cursor: pointer;
