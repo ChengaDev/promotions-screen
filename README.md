@@ -29,4 +29,4 @@ Run only the api using this command:
 npm run api
 ```
 
-Click on the big blue button to load promotions data from the server
+Enjoy!
