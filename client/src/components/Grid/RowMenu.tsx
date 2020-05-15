@@ -54,4 +54,4 @@ const Container = styled.div`
     box-shadow: 0 0 12px #888;
 `;
 
-export default RowMenu;
+export default React.memo(RowMenu);

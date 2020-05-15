@@ -71,4 +71,4 @@ const WelcomeButton = styled.button`
     }
 `;
 
-export default WelcomeModal;
+export default React.memo(WelcomeModal);

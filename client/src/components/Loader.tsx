@@ -35,4 +35,4 @@ const LoaderText = styled.div`
     }
 `;
 
-export default Loader;
+export default React.memo(Loader);

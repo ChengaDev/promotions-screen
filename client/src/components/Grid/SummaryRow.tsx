@@ -33,4 +33,4 @@ const Summary = styled.div`
     border-left: 1px solid lightgray;
 `;
 
-export default SummaryRow;
+export default React.memo(SummaryRow);
