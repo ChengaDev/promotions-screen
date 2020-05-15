@@ -32,7 +32,7 @@ class Modal extends React.Component {
 const DarkOverlay = styled.div`
     animation: ${FadeInAnimation} 0.5s;
     z-index: 999;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     height: 100%;
     width: 100%;

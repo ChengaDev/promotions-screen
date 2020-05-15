@@ -2,29 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 
-type WelcomeModalProps = {
+type ErrorModalProps = {
     closeModal: () => void;
 };
 
-function WelcomeModal(props: WelcomeModalProps) {
+function ErrorModal(props: ErrorModalProps) {
     return (
         <Modal>
             <Container>
-                <WelcomeTitle>Welcome to promotions screen!</WelcomeTitle>
-                <WelcomeContent>
-                    In this screen you will be able to view promotions data of
-                    specific users. <br />
-                    Have fun!
-                </WelcomeContent>
-                <WelcomeButton onClick={props.closeModal}>
-                    Got it!
-                </WelcomeButton>
+                <ErrorTitle>OOPS...</ErrorTitle>
+                <ErrorContent>
+                    Looks like something went wrong.
+                    <br />
+                    We suggest to retry again or talk to our support at
+                    050-9933573
+                </ErrorContent>
+                <Button onClick={props.closeModal}>OK</Button>
             </Container>
         </Modal>
     );
 }
 
-const WelcomeTitle = styled.div`
+const ErrorTitle = styled.div`
+    color: #fc0356;
     font-size: 25px;
     font-weight: bold;
 
@@ -49,7 +49,7 @@ const Container = styled.div`
     }
 `;
 
-const WelcomeContent = styled.div`
+const ErrorContent = styled.div`
     font-size: 20px;
     margin-top: 30px;
     font-weight: 300;
@@ -59,8 +59,9 @@ const WelcomeContent = styled.div`
     }
 `;
 
-const WelcomeButton = styled.button`
-    background-color: #d8e5e8;
+const Button = styled.button`
+    background-color: #fc0356;
+    color: white;
     cursor: pointer;
     position: relative;
     width: 150px;
@@ -74,4 +75,4 @@ const WelcomeButton = styled.button`
     }
 `;
 
-export default React.memo(WelcomeModal);
+export default React.memo(ErrorModal);

@@ -9,9 +9,13 @@ type HeadersProps = {
 
 function Headers(props: HeadersProps) {
     let { columns } = props;
+    const deafultMinWidth = '30px';
     return (
         <Container>
-            <SelectionColumnHeader minWidth={'30px'} relativeWidth={0.5} />
+            <SelectionColumnHeader
+                minWidth={deafultMinWidth}
+                relativeWidth={0.5}
+            />
             {columns.map((column: GridColumnConfig, index: number) => (
                 <Header
                     key={index}
@@ -21,7 +25,7 @@ function Headers(props: HeadersProps) {
                     {columns[index].displayName}
                 </Header>
             ))}
-            <ActionsColumnHeader minWidth={'30px'} relativeWidth={1}>
+            <ActionsColumnHeader minWidth={deafultMinWidth} relativeWidth={1}>
                 Actions
             </ActionsColumnHeader>
         </Container>
